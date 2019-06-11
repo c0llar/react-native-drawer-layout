@@ -34,6 +34,7 @@ export type PropType = {
     renderNavigationView: () => any,
     statusBarBackgroundColor?: string,
     useNativeAnimations?: boolean,
+    overlayColor?: string,
 };
 
 export type StateType = {
@@ -71,6 +72,7 @@ export default class DrawerLayout extends Component {
         drawerWidth: 0,
         drawerPosition: 'left',
         useNativeAnimations: false,
+        overlayColor: '#000',
     };
 
     static positions = {
@@ -133,6 +135,7 @@ export default class DrawerLayout extends Component {
             drawerBackgroundColor,
             drawerWidth,
             drawerPosition,
+            overlayColor,
         } = this.props;
 
         /**
@@ -187,7 +190,7 @@ export default class DrawerLayout extends Component {
                 >
                     <Animated.View
                         pointerEvents={pointerEvents}
-                        style={[styles.overlay, animatedOverlayStyles]}
+                        style={[styles.overlay, animatedOverlayStyles, {backgroundColor: overlayColor}]}
                     />
                 </TouchableWithoutFeedback>
                 <Animated.View
